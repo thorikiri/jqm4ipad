@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1">
+    <title>jQueryMobileでiPadのような2カラムデザイン</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.1.1.css"></link>
+    <link rel="stylesheet" href="css/sample.css"></link>
+    <script type="text/javascript" src="js/jquery-1.7.2.js" ></script>
+    <script type="text/javascript" src="js/sample.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.1.1.js"></script>
+  </head>
+  <body>
+    <section data-role="page" id="index" data-mainpage="#main" data-menupage="#menu">
+      <div class="ui-grid-a ipad-grid">
+        <div class="ui-block-a ipad-menu-block">
+          <header data-role="header" data-theme="c" class="ipad-menu-header" id="menuHeader">
+            <h1>menu</h1>
+          </header>
+          <div data-role="content" class="ipad-menu-body" id="menuBody">
+          </div>
+        </div>
+        <div class="ui-block-b ipad-content-block">
+          <header data-role="header" data-theme="c" class="ipad-content-header" id="contentHeader">
+            <h1>content</h1>
+          </header>
+          <div data-role="content" class="ipad-content-body" id="contentBody">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="main" data-role="page">
+      <div class="ui-grid-a ipad-grid">
+        <div class="ui-block-b ipad-content-block">
+          <div data-role="content" class="ipad-content-body">
+            <form>
+              <label for="searchText">検索:</label>
+              <input type="search" name="searchText" id="searchText"/>
+              <label for="searchDueDate">期限:</label>
+              <input type="date" name="searchDueDate" id="searchDueDate" />
+              <label for="searchStatus">ステータス:</label>
+              <select id="searchStatus" name="searchStatus">
+                <option>----</option>
+                <option value="0">未着手</option>
+                <option value="1">作業中</option>
+                <option value="2">完了</option>
+              </select>
+              <button data-theme="b">検索</button>
+            </form>
+            <h2>検索結果</h2>
+            <ul data-role="listview" data-inset="true">
+              <li>
+                <a href="#">
+                  <h3>TODO-1</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h3>TODO-2</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h3>TODO-3</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h3>TODO-4</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h3>TODO-5</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h3>TODO-6</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h3>TODO-7</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h3>TODO-8</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h3>TODO-9</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h3>TODO-10</h3>
+                  <p class="ui-li-aside">2012/12/30 まで</p>
+                  <p><strong>未着手</strong></p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="menu" data-role="page">
+      <div class="ui-grid-a ipad-grid">
+        <div class="ui-block-a ipad-menu-block">
+          <div data-role="content" class="ipad-menu-body">
+            <ul data-role="listview">
+              <li><a href="#main">content</a></li>
+              <li><a href="#menu1">Menu-1</a></li>
+              <li><a href="#menu2" data-href-target="menu">Menu-2</a></li>
+              <li><a href="#menu3">Menu-3</a></li>
+              <li><a href="#menu4">Menu-4</a></li>
+              <li><a href="#menu5">Menu-5</a></li>
+              <li><a href="#menu6">Menu-6</a></li>
+              <li><a href="#menu7">Menu-7</a></li>
+              <li><a href="#menu8">Menu-8</a></li>
+              <li><a href="#menu9">Menu-9</a></li>
+              <li><a href="#menu10">Menu-10</a></li>
+              <li><a href="#menu11">Menu-11</a></li>
+              <li><a href="#menu12">Menu-12</a></li>
+              <li><a href="#menu13">Menu-13</a></li>
+              <li><a href="#menu14">Menu-14</a></li>
+              <li><a href="#menu15">Menu-15</a></li>
+              <li><a href="#menu16">Menu-16</a></li>
+              <li><a href="#menu17">Menu-17</a></li>
+              <li><a href="#menu18">Menu-18</a></li>
+              <li><a href="#menu19">Menu-19</a></li>
+              <li><a href="#menu20">Menu-20</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="menu1" data-role="page">
+      <div class="ui-grid-a ipad-grid">
+        <div class="ui-block-b ipad-content-block">
+          <div data-role="content" class="ipad-content-body">
+            <ul data-role="listview">
+              <li>aaaa</li>
+              <li>aaaa</li>
+              <li>aaaa</li>
+              <li>aaaa</li>
+              <li>aaaa</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="menu2" data-role="page">
+      <div class="ui-grid-a ipad-grid">
+        <div class="ui-block-a ipad-menu-block">
+          <div data-role="content" class="ipad-menu-body">
+            <ul data-role="listview">
+              <li><a href="#submenu1">SubMenu-1</a></li>
+              <li><a href="#submenu2">SubMenu-2</a></li>
+              <li><a href="#submenu3">SubMenu-3</a></li>
+              <li><a href="#submenu4">SubMenu-4</a></li>
+              <li><a href="#submenu5">SubMenu-5</a></li>
+              <li><a href="#submenu6">SubMenu-6</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="submenu1" data-role="page">
+      <div class="ui-grid-a ipad-grid">
+        <div class="ui-block-b ipad-block">
+          <div data-role="content" class="ipad-content-body">
+            SubMenu1 Content
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="submenu2" data-role="page">
+      <div class="ui-grid-a ipad-grid">
+        <div class="ui-block-a ipad-block">
+          <div data-role="content" class="ipad-menu-body">
+            SubMenu2 Menu
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
