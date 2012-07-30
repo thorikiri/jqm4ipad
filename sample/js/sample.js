@@ -29,7 +29,7 @@
 	app.getMenuBackStack = (function() {
 		return function() {
 			if (app.menuBackStack.length === 0) {
-				return undefined;
+				return '#';
 			}
 			return app.menuBackStack[app.menuBackStack.length - 1];
 		};
@@ -45,7 +45,7 @@
 	app.getContentBackStack = (function() {
 		return function() {
 			if (app.contentBackStack.length === 0) {
-				return undefined;
+				return '#';
 			}
 			return app.contentBackStack[app.contentBackStack.length - 1];
 		};
@@ -73,6 +73,12 @@
 	})();
 	app.backMenuBody = (function() {
 		return function(title, page) {
+			var html = $(page).find('div[class=ipad-menu-body]').html();
+			$('#menuBody').html(html);
+			$('#menuHeader h1').text(title);
+			$('#index').data('menupage', page);
+			$('#menuHeader').find('a').remove();
+			var back = app.getMenuBackStack();
 			if (page !== '#menu') {
 				$('#menuHeader').append($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', back).text('Back'));
 			}
@@ -112,7 +118,7 @@
 			var rel = target.data('rel');
 			if (rel === 'back') {
 				var title = 'back';
-				app.loadMenuBody(title, app.popMenuBackStack());
+				app.backMenuBody(title, app.popMenuBackStack());
 				return false;
 			}
 		});
