@@ -51,7 +51,7 @@
             <h2>検索結果</h2>
             <ul data-role="listview" data-inset="true">
               <li>
-                <a href="#">
+                <a href="#todo1" data-href-target="content">
                   <h3>TODO-1</h3>
                   <p class="ui-li-aside">2012/12/30 まで</p>
                   <p><strong>未着手</strong></p>
@@ -131,8 +131,8 @@
         <div class="ui-block-a ipad-menu-block">
           <div data-role="content" class="ipad-menu-body">
             <ul data-role="listview">
-              <li><a href="#main">content</a></li>
-              <li><a href="#menu1">Menu-1</a></li>
+              <li><a href="#main" data-href-target="content">content</a></li>
+              <li><a href="#menu1" data-href-target="content">Menu-1</a></li>
               <li><a href="#menu2" data-href-target="menu">Menu-2</a></li>
               <li><a href="#menu3">Menu-3</a></li>
               <li><a href="#menu4">Menu-4</a></li>
@@ -179,7 +179,7 @@
         <div class="ui-block-a ipad-menu-block">
           <div data-role="content" class="ipad-menu-body">
             <ul data-role="listview">
-              <li><a href="#submenu1">SubMenu-1</a></li>
+              <li><a href="#submenu1" data-href-target="content">SubMenu-1</a></li>
               <li><a href="#submenu2" data-href-target="menu">SubMenu-2</a></li>
               <li><a href="#submenu3">SubMenu-3</a></li>
               <li><a href="#submenu4">SubMenu-4</a></li>
@@ -193,7 +193,7 @@
     
     <section id="submenu1" data-role="page">
       <div class="ui-grid-a ipad-grid">
-        <div class="ui-block-b ipad-block">
+        <div class="ui-block-b ipad-content-block">
           <div data-role="content" class="ipad-content-body">
             SubMenu1 Content
           </div>
@@ -203,9 +203,35 @@
     
     <section id="submenu2" data-role="page">
       <div class="ui-grid-a ipad-grid">
-        <div class="ui-block-a ipad-block">
+        <div class="ui-block-a ipad-menu-block">
           <div data-role="content" class="ipad-menu-body">
             SubMenu2 Menu
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="todo1" data-role="page">
+      <div class="ui-grid-a ipad-grid">
+        <div class="ui-block-b ipad-content-block">
+          <div data-role="content" class="ipad-content-body">
+            TODO 1 Detail
+            <ul data-role="listview" data-inset="true">
+              <li><a href="#watcher1" data-href-target="content">Watcher1</a></li>
+              <li><a href="#watcher2">Watcher2</a></li>
+              <li><a href="#watcher3">Watcher3</a></li>
+              <li><a href="#watcher4">Watcher4</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="watcher1" data-role="page">
+      <div class="ui-grid-a ipad-grid">
+        <div class="ui-block-b ipad-content-block">
+          <div data-role="content" class="ipad-content-body">
+            Watcher1
           </div>
         </div>
       </div>
