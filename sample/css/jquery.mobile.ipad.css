@@ -1,0 +1,89 @@
+div.ipad-grid {
+    height: 100%;
+}
+
+div.ipad-grid div.ipad-menu-block {
+    border: solid 1px #666666;
+    border-right: none;
+    border-radius: 5px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+div.ipad-grid div.ipad-menu-block header.ipad-menu-header {
+    position: fixed;
+    top: 0;
+    border: solid 0px 1px 0px 0px #666666;
+    border-radius: 5px 5px 0px 0px;
+    z-index: 5;
+}
+
+div.ipad-grid div.ipad-menu-block div.ipad-menu-body {
+    padding-top: 56px;
+}
+
+div.ipad-grid div.ipad-menu-block div.ipad-menu-body ul li {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+div.ipad-grid div.ipad-content-block {
+    border: solid 1px #666666;
+    border-radius: 5px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+div.ipad-grid div.ipad-content-block header.ipad-content-header {
+    position: fixed;
+    top: 0;
+    border: solid 0px 1px 0px 0px #666666;
+    border-radius: 5px 5px 0px 0px;
+    z-index: 5;
+}
+
+div.ipad-grid div.ipad-content-block div.ipad-content-body {
+    padding-top: 56px;
+}
+
+div.ipad-grid div.ipad-content-block div.ipad-content-body ul li {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+@media screen and (min-width: 900px) {
+    div.ipad-grid div.ipad-menu-block {
+        width: 301px;
+        height: 672px;
+    }
+    div.ipad-grid div.ipad-menu-block header.ipad-menu-header {
+        width: 300px;
+    }
+    div.ipad-grid div.ipad-content-block {
+        width: 723px;
+        height: 672px;
+    }
+    div.ipad-grid div.ipad-content-block header.ipad-content-header {
+        width: 722px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    div.ipad-grid div.ipad-menu-block {
+        width: 301px;
+        height: 928px;
+    }
+    div.ipad-grid div.ipad-menu-block header.ipad-menu-header {
+        width: 300px;
+    }
+    div.ipad-grid div.ipad-menu-block header.ipad-menu-header ul {
+        width: 300px;
+    }    
+    div.ipad-grid div.ipad-content-block {
+        width: 467px;
+        height: 928px;
+    }
+    div.ipad-grid div.ipad-content-block header.ipad-content-header {
+        width: 466px;
+    }
+}
