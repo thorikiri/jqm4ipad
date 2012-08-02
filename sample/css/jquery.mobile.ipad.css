@@ -54,14 +54,14 @@ div.ipad-grid div.ipad-content-block div.ipad-content-body ul li {
 @media screen and (min-width: 900px) {
     div.ipad-grid div.ipad-menu-block {
         width: 301px;
-        height: 672px;
+        height: 672px; /* native 748px; */
     }
     div.ipad-grid div.ipad-menu-block header.ipad-menu-header {
         width: 300px;
     }
     div.ipad-grid div.ipad-content-block {
         width: 723px;
-        height: 672px;
+        height: 672px; /* native 748px; */
     }
     div.ipad-grid div.ipad-content-block header.ipad-content-header {
         width: 722px;
@@ -71,7 +71,7 @@ div.ipad-grid div.ipad-content-block div.ipad-content-body ul li {
 @media screen and (min-width: 600px) and (max-width: 900px) {
     div.ipad-grid div.ipad-menu-block {
         width: 301px;
-        height: 928px;
+        height: 928px; /* native 1004px; */
     }
     div.ipad-grid div.ipad-menu-block header.ipad-menu-header {
         width: 300px;
@@ -81,7 +81,7 @@ div.ipad-grid div.ipad-content-block div.ipad-content-body ul li {
     }    
     div.ipad-grid div.ipad-content-block {
         width: 467px;
-        height: 928px;
+        height: 928px; /* native 1004px; */
     }
     div.ipad-grid div.ipad-content-block header.ipad-content-header {
         width: 466px;
