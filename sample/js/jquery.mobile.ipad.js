@@ -1,5 +1,5 @@
 (function($) {
-		var app = {};
+	var app = {};
 	app.menuBackStack = [];
 	app.contentBackStack = [];
 	app.backStackConfig = {};
@@ -124,9 +124,9 @@
 	app.init = (function() {
 		return function() {
 			$('#contentBody').html($('#main').find('div[class=ipad-content-body]').html());
-			$('#contentHeader h1').text('content');
+			$('#contentHeader h1').text(app.backStackConfig.main.title);
 			$('#menuBody').html($('#menu').find('div[class=ipad-menu-body]').html());
-			$('#menuHeader h1').text('menu');
+			$('#menuHeader h1').text(app.backStackConfig.menu.title);
 			$('#index').page();
 		};
 	})();
@@ -136,4 +136,52 @@
 		};
 	})();
 	$.ipad = app;
+	
+	$(document).on('click tap', '#menuBody a, #menuBody button', function(ev) {
+		var target = $(this);
+		var hrefTarget = target.data('href-target');
+		var title = target.text();
+		var href = target.attr('href');
+		if (hrefTarget === 'menu') {
+			if (href && href !== '#') {
+				$.ipad.loadMenuBody(title, href);
+				return false;
+			}
+		} else if (hrefTarget === 'content') {
+			if (href && href !== '#') {
+				$.ipad.loadContentBody(title, href);
+				return false;
+			}
+		}
+		return true;
+	});
+	$(document).on('click tap', '#contentBody a, #contentBody button', function(ev) {
+		var target = $(this);
+		var hrefTarget = target.data('href-target');
+		var title = target.text();
+		var href = target.attr('href');
+		if (hrefTarget === 'content') {
+			if (href && href !== '#') {
+				$.ipad.loadContentBody(title, href, true);
+				return false;
+			}
+		}
+		return true;
+	});
+	$(document).on('click tap', '#menuHeader a', function(ev) {
+		var target = $(this);
+		var rel = target.data('rel');
+		if (rel === 'back') {
+			$.ipad.backMenuBody($.ipad.popMenuBackStack());
+			return false;
+		}
+	});
+	$(document).on('click tap', '#contentHeader a', function(ev) {
+		var target = $(this);
+		var rel = target.data('rel');
+		if (rel === 'back') {
+			$.ipad.backContentBody($.ipad.popContentBackStack());
+			return false;
+		}
+	});
 })(jQuery);
