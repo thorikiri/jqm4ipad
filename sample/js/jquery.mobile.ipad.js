@@ -62,18 +62,24 @@
 	app.loadContentBody = (function() {
 		return function(title, page, backbtn) {
 			var html = $(page).find('div[class=ipad-content-body]').html();
+			var header = $(page).find('header[data-role=header]').html();
 			$('#contentBody').html(html);
-			$('#contentHeader h1').text(title);
+			$('#contentHeader').empty();
+			if (header) {
+				$('#contentHeader').html(header);
+			} else {
+				$('#contentHeader').append($('<h1></h1>').text(title));
+			}
 			if (backbtn) {
 				var backHash = $('#index').data('mainpage');
 				var backTitle = $('#index').data('mainpagetitle');
 				app.pushContentBackStack({hash: backHash, title: backTitle});
 				$('#index').data('mainpage', page).data('mainpagetitle', title);
-				$('#contentHeader').find('a').remove();
-				$('#contentHeader').append($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', backHash).text('Back'));
+				$('#contentHeader').find('a[data-icon=back]').remove();
+				$('#contentHeader').prepend($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', backHash).text($.mobile.page.prototype.options.backBtnText));
 			} else {
 				$('#index').data('mainpage', page).data('mainpagetitle', title);
-				$('#contentHeader').find('a').remove();
+				$('#contentHeader').find('a[data-icon=back]').remove();
 				app.clearContentBackStack();
 			}
 			$('#index').page('destroy').page();
@@ -82,14 +88,20 @@
 	app.loadMenuBody = (function() {
 		return function(title, page) {
 			var html = $(page).find('div[class=ipad-menu-body]').html();
+			var header = $(page).find('header[data-role=header]').html();
 			$('#menuBody').html(html);
-			$('#menuHeader h1').text(title);
+			$('#menuHeader').empty();
+			if (header) {
+				$('#menuHeader').html(header);
+			} else {
+				$('#menuHeader').append($('<h1></h1>').text(title));
+			}
 			var backHash = $('#index').data('menupage');
 			var backTitle = $('#index').data('menupagetitle');
 			app.pushMenuBackStack({hash: backHash, title: backTitle});
 			$('#index').data('menupage', page).data('menupagetitle', title);
-			$('#menuHeader').find('a').remove();
-			$('#menuHeader').append($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', backHash).text('Back'));
+			$('#menuHeader').find('a[data-icon=back]').remove();
+			$('#menuHeader').prepend($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', backHash).text($.mobile.page.prototype.options.backBtnText));
 			$('#index').page('destroy').page();
 		};
 	})();
@@ -97,12 +109,11 @@
 		return function(page) {
 			var html = $(page.hash).find('div[class=ipad-content-body]').html();
 			$('#contentBody').html(html);
-			$('#contentHeader h1').text(page.title);
+			$('#contentHeader').empty().append($('<h1></h1>').text(page.title));
 			$('#index').data('mainpage', page.hash).data('mainpagetitle', page.title);
-			$('#contentHeader').find('a').remove();
 			var back = app.getContentBackStack();
 			if (page && page.hash !== app.backStackConfig.main.hash) {
-				$('#contentHeader').append($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', back.hash).text('Back'));
+				$('#contentHeader').prepend($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', back.hash).text($.mobile.page.prototype.options.backBtnText));
 			}
 			$('#index').page('destroy').page();
 		};
@@ -111,12 +122,12 @@
 		return function(page) {
 			var html = $(page.hash).find('div[class=ipad-menu-body]').html();
 			$('#menuBody').html(html);
-			$('#menuHeader h1').text(page.title);
+			$('#menuHeader').empty().append($('<h1></h1>').text(page.title));
 			$('#index').data('menupage', page.hash).data('menupagetitle', page.title);
-			$('#menuHeader').find('a').remove();
+			$('#menuHeader').find('a[data-icon=back]').remove();
 			var back = app.getMenuBackStack();
 			if (page && page.hash !== app.backStackConfig.menu.hash) {
-				$('#menuHeader').append($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', back.hash).text('Back'));
+				$('#menuHeader').prepend($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', back.hash).text($.mobile.page.prototype.options.backBtnText));
 			}
 			$('#index').page('destroy').page();
 		};
