@@ -15,19 +15,23 @@
   <body>
     <section data-role="page" id="index" data-mainpage="#main" data-mainpagetitle="content" data-menupage="#menu" data-menupagetitle="menu">
       <div class="ui-grid-a ipad-grid">
-        <div class="ui-block-a ipad-menu-block">
+        <div class="ui-block-a ipad-menu-block" id="menuBlock">
           <header data-role="header" data-theme="c" class="ipad-menu-header" id="menuHeader">
             <h1>menu</h1>
           </header>
           <div data-role="content" class="ipad-menu-body" id="menuBody">
           </div>
+          <footer data-role="footer" data-theme="c" class="ipad-menu-footer" id="menuFooter">
+          </footer>
         </div>
-        <div class="ui-block-b ipad-content-block">
+        <div class="ui-block-b ipad-content-block" id="contentBlock">
           <header data-role="header" data-theme="c" class="ipad-content-header" id="contentHeader">
             <h1>content</h1>
           </header>
           <div data-role="content" class="ipad-content-body" id="contentBody">
           </div>
+          <footer data-role="footer" data-theme="c" class="ipad-content-footer" id="contentFooter">
+          </footer>
         </div>
       </div>
     </section>
@@ -189,6 +193,9 @@
               <li><a href="#submenu6">SubMenu-6</a></li>
             </ul>
           </div>
+          <footer data-role="footer" class="ipad-menu-footer">
+            <h3>フッター</h3>
+          </footer>
         </div>
       </div>
     </section>
@@ -199,6 +206,9 @@
           <div data-role="content" class="ipad-content-body">
             SubMenu1 Content
           </div>
+          <footer data-role="footer" data-theme="c">
+            <h3>Footer</h3>
+          </footer>
         </div>
       </div>
     </section>

@@ -63,6 +63,7 @@
 		return function(title, page, backbtn) {
 			var html = $(page).find('div[class=ipad-content-body]').html();
 			var header = $(page).find('header[data-role=header]').html();
+			var footer = $(page).find('footer[data-role=footer]').html();
 			$('#contentBody').html(html);
 			$('#contentHeader').empty();
 			if (header) {
@@ -70,10 +71,20 @@
 			} else {
 				$('#contentHeader').append($('<h1></h1>').text(title));
 			}
+			if (footer) {
+				var orgFooter = $('#contentFooter').html();
+				if (orgFooter) {
+					$('#contentFooter').html(footer).show();
+				} else {
+					$('#contentBlock').append($('<footer data-role="footer"></footer>').html(footer).show());
+				}
+			} else {
+				$('#contentFooter').hide();
+			}
 			if (backbtn) {
 				var backHash = $('#index').data('mainpage');
 				var backTitle = $('#index').data('mainpagetitle');
-				app.pushContentBackStack({hash: backHash, title: backTitle});
+				app.pushContentBackStack({hash: backHash, title: backTitle, footer: footer});
 				$('#index').data('mainpage', page).data('mainpagetitle', title);
 				$('#contentHeader').find('a[data-icon=back]').remove();
 				$('#contentHeader').prepend($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', backHash).text($.mobile.page.prototype.options.backBtnText));
@@ -89,6 +100,7 @@
 		return function(title, page) {
 			var html = $(page).find('div[class=ipad-menu-body]').html();
 			var header = $(page).find('header[data-role=header]').html();
+			var footer = $(page).find('footer[data-role=footer]').html();
 			$('#menuBody').html(html);
 			$('#menuHeader').empty();
 			if (header) {
@@ -96,9 +108,19 @@
 			} else {
 				$('#menuHeader').append($('<h1></h1>').text(title));
 			}
+			if (footer) {
+				var orgFooter = $('#menuFooter').html();
+				if (orgFooter) {
+					$('#menuFooter').html(footer).show();
+				} else {
+					$('#menuBlock').append($('<footer data-role="footer" data-theme="c"></footer>').html(footer).show());
+				}
+			} else {
+				$('#menuFooter').hide();
+			}
 			var backHash = $('#index').data('menupage');
 			var backTitle = $('#index').data('menupagetitle');
-			app.pushMenuBackStack({hash: backHash, title: backTitle});
+			app.pushMenuBackStack({hash: backHash, title: backTitle, footer: footer});
 			$('#index').data('menupage', page).data('menupagetitle', title);
 			$('#menuHeader').find('a[data-icon=back]').remove();
 			$('#menuHeader').prepend($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', backHash).text($.mobile.page.prototype.options.backBtnText));
@@ -110,24 +132,42 @@
 			var html = $(page.hash).find('div[class=ipad-content-body]').html();
 			$('#contentBody').html(html);
 			$('#contentHeader').empty().append($('<h1></h1>').text(page.title));
+			$('#contentFooter').empty().hide();
 			$('#index').data('mainpage', page.hash).data('mainpagetitle', page.title);
-			var back = app.getContentBackStack();
 			if (page && page.hash !== app.backStackConfig.main.hash) {
 				$('#contentHeader').prepend($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', back.hash).text($.mobile.page.prototype.options.backBtnText));
+				if (back.footer) {
+					var orgFooter = $('#contentFooter').html();
+					if (orgFooter) {
+						$('#contentFooter').html(back.footer).show();
+					} else {
+						$('#contentBlock').append($('<footer data-role="footer"></footer>').html(back.footer).show());
+					}
+				}
 			}
 			$('#index').page('destroy').page();
 		};
 	})();
 	app.backMenuBody = (function() {
 		return function(page) {
+			console.log(page);
 			var html = $(page.hash).find('div[class=ipad-menu-body]').html();
 			$('#menuBody').html(html);
 			$('#menuHeader').empty().append($('<h1></h1>').text(page.title));
+			$('#menuFooter').hide();
 			$('#index').data('menupage', page.hash).data('menupagetitle', page.title);
 			$('#menuHeader').find('a[data-icon=back]').remove();
 			var back = app.getMenuBackStack();
 			if (page && page.hash !== app.backStackConfig.menu.hash) {
 				$('#menuHeader').prepend($('<a></a>').data('icon', 'back').data('rel', 'back').attr('href', back.hash).text($.mobile.page.prototype.options.backBtnText));
+				if (back.footer) {
+					var orgFooter = $('#menuFooter').html();
+					if (orgFooter) {
+						$('#menuFooter').html(back.footer).show();
+					} else {
+						$('#menuBlock').append($('<footer data-role="footer"></footer>').html(back.footer).show());
+					}
+				}
 			}
 			$('#index').page('destroy').page();
 		};
@@ -147,6 +187,8 @@
 			var contentFooter = $('#main').find('footer[class=ipad-content-footer]').html();
 			if (contentFooter) {
 				$('#contentFooter').html(contentFooter);
+			} else {
+				$('#contentFooter').hide();
 			}
 			var menuBody = $('#menu').find('div[class=ipad-menu-body]').html();
 			if (menuBody) {
@@ -161,6 +203,8 @@
 			var menuFooter = $('#menu').find('footer[class=ipad-menu-footer]').html();
 			if (menuFooter) {
 				$('#menuFooter').html(menuFooter);
+			} else {
+				$('#menuFooter').hide();
 			}
 			$('#index').page();
 		};
