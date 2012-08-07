@@ -134,10 +134,34 @@
 	})();
 	app.init = (function() {
 		return function() {
-			$('#contentBody').html($('#main').find('div[class=ipad-content-body]').html());
-			$('#contentHeader h1').text(app.backStackConfig.main.title);
-			$('#menuBody').html($('#menu').find('div[class=ipad-menu-body]').html());
-			$('#menuHeader h1').text(app.backStackConfig.menu.title);
+			var contentBody = $('#main').find('div[class=ipad-content-body]').html();
+			if (contentBody) {
+				$('#contentBody').html(contentBody);
+			}
+			var contentHeader = $('#main').find('header[class=ipad-content-header]').html();
+			if (contentHeader) {
+				$('#contentHeader').html(contentHeader);
+			} else {
+				$('#contentHeader').empty().append($('<h1></h1>').text(app.backStackConfig.main.title));
+			}
+			var contentFooter = $('#main').find('footer[class=ipad-content-footer]').html();
+			if (contentFooter) {
+				$('#contentFooter').html(contentFooter);
+			}
+			var menuBody = $('#menu').find('div[class=ipad-menu-body]').html();
+			if (menuBody) {
+				$('#menuBody').html(menuBody);
+			}
+			var menuHeader = $('#menu').find('header[class=ipad-menu-header]').html();
+			if (menuHeader) {
+				$('#menuHeader').html(menuHeader);
+			} else {
+				$('#menuHeader').empty().append($('<h1></h1>').text(app.backStackConfig.menu.title));
+			}
+			var menuFooter = $('#menu').find('footer[class=ipad-menu-footer]').html();
+			if (menuFooter) {
+				$('#menuFooter').html(menuFooter);
+			}
 			$('#index').page();
 		};
 	})();
